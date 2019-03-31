@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.zhangbiao.design.adapter.NormalAdapter;
+import com.example.zhangbiao.design.been.DesignVO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         //设置为垂直布局，这也是默认的
         layoutManager.setOrientation(OrientationHelper.VERTICAL);
         //设置Adapter
-        normalAdapter = new NormalAdapter(getList());
+        normalAdapter = new NormalAdapter(this,getList());
         mRecycleView.setAdapter(normalAdapter);
         //设置分隔线
 //        mRecycleView.addItemDecoration(new DividerGridItemDecoration(this));
@@ -42,10 +43,14 @@ public class MainActivity extends AppCompatActivity {
         mRecycleView.setItemAnimator(new DefaultItemAnimator());
     }
 
-    private List<String> getList(){
-        List<String> list = new ArrayList<>();
-        list.add("单例模式");
-        list.add("工厂模式");
+    private List<DesignVO> getList(){
+
+
+        List<DesignVO> list = new ArrayList<>();
+
+        list.add(new DesignVO("单例模式","singleton.md"));
+        list.add(new DesignVO("代理模式","proxy.md"));
+
         return list;
     }
 
